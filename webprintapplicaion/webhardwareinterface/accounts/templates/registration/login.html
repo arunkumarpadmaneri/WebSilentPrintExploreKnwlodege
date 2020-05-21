@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+.cardlogin{
+	width:30%;
+	margin-left:35%;
+	margin-top:5%; 
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.center{
+	text-align: center;
+}	
+</style>
+<div class="login row">
+<div class="card cardlogin">
+  <div class="card-body">
+  	<h3 class="card-title text-center">Login</h3>
+	<form class="form-control" method="post">
+		{% csrf_token %}
+	    <div class="form-group">
+	      <label class="center" for="id_username">Username:</label>
+	      <input type="text" class="form-control" id="id_username" placeholder="Username" name="username">
+	   	  <span class="glyphicon glyphicon-user form-control-feedback"></span>
+	    </div>
+	    <div class="form-group">
+	      <label class="center" for="id_password">Password:</label>
+	      <input type="password" class="form-control" id="id_password" placeholder="password" name="password">
+	    </div>
+	    <div class="center">
+  			<button class="btn-md btn-success" type="submit">Login</button>
+  		</div>
+<!-- 	  {% csrf_token %}
+	  {{ form.as_p }}
+ -->	
+	</form>  	
+  </div>
+</div>
+
+</div>
+{%endblock%}

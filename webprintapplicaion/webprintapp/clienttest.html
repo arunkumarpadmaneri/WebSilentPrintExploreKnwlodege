@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket demo</title>
+        <script
+              src="https://code.jquery.com/jquery-3.3.1.js"
+              integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+              crossorigin="anonymous">
+        </script>
+        
+    </head>
+    <body>
+        <script>
+            var ws = new WebSocket("ws://127.0.0.1:5678/");
+            i=0;
+            while(i<50){
+                var dt={"action":2,"msg":{"info_type":1}};
+                setTimeout(function(){ws.send(JSON.stringify(dt));},3000)
+                i=i+1;
+            }  
+                messages = document.createElement('ul');
+            ws.onmessage = function (event) {
+                console.log("data",event)
+                var messages = document.getElementsByTagName('ul')[0],
+                    message = document.createElement('li'),
+                    content = document.createTextNode(event.data);
+                message.appendChild(content);
+                messages.appendChild(message);
+            };
+            document.body.appendChild(messages);
+        </script>
+    </body>
+</html>
